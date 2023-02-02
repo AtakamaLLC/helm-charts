@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "atakama-srv-logger-importer.fullname" . }}
+  labels:
+    {{- include "atakama-srv-logger-importer.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "atakama-srv-logger-importer.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "atakama-srv-logger-importer.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "atakama-srv-logger-importer.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}-logger
+          securityContext:
+            {{- toYaml .Values.logger.securityContext | nindent 12 }}
+          image: "{{ .Values.logger.image.repository }}:{{ .Values.logger.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.logger.image.pullPolicy }}
+          {{- with .Values.config | merge .Values.logger.config }}
+          env:
+            - name: "ATK_SRV_DASHBOARD_IMPORT_DIR"
+              value: "{{ .dashboardImportDir }}"
+          envFrom:
+            - secretRef:
+                name: {{ .dashboardDbSecret }}
+          {{- end }}
+          volumeMounts: 
+          {{- with .Values.config | merge .Values.logger.config }}
+            - name: {{ .logVolumeName }}
+              mountPath:  {{ .dashboardImportDir }}
+          {{- end }}
+          {{- with .Values.logger.volumeMounts | concat .Values.logger.extraVolumeMounts }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          resources:
+            {{- toYaml .Values.logger.resources | nindent 12 }}
+
+        - name: {{ .Chart.Name }}-importer
+          securityContext:
+            {{- toYaml .Values.importer.securityContext | nindent 12 }}
+          image: "{{ .Values.importer.image.repository }}:{{ .Values.importer.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.importer.image.pullPolicy }}
+          {{- with .Values.config | merge .Values.importer.config }}
+          env: 
+            - name: ATK_SRV_DASHBOARD_IMPORT_DIR
+              value: {{ .dashboardImportDir }}
+          envFrom:
+            - secretRef:
+                name: {{ .dashboardDbSecret }}
+          {{- end }}
+          volumeMounts:
+          {{- with .Values.config | merge .Values.importer.config }}
+            - name: {{ .logVolumeName }}
+              mountPath:  {{ .dashboardImportDir }}
+          {{- end }}
+          {{- with .Values.importer.volumeMounts | concat .Values.importer.extraVolumeMounts }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          resources:
+            {{- toYaml .Values.importer.resources | nindent 12 }}
+
+      {{- with .Values.volumes | concat .Values.extraVolumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

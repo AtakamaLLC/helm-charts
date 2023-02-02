@@ -1,0 +1,41 @@
+apiVersion: v2
+name: enterprise-dashboard-stack
+description: A Helm chart for deploying all services requird to run the enterprise dashboard
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.0.3
+
+dependencies:
+  - name: atakama-srv-aggregator
+    version: 0.0.2
+    repository: "@atakama-srv-aggregator"
+    condition: atakama-srv-aggregator.enabled
+    tags:
+      - backend
+      - atakama-srv-aggregator
+  - name: atakama-srv-logger-importer
+    version: 0.0.2
+    repository: "@atakama-srv-logger-importer"
+    condition: atakama-srv-logger-importer.enabled
+    tags:
+      - backend
+      - atakama-srv-logger-importer
+  - name: atakama-srv-web
+    version: 0.0.3
+    repository: "@atakama-srv-web"
+    condition: atakama-srv-web.enabled
+    tags:
+      - frontend
+      - atakama-srv-web

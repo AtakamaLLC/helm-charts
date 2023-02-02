@@ -1,0 +1,12 @@
+dependencies:
+- name: atakama-srv-aggregator
+  repository: s3://atakama-helm/charts/stable/atakama-srv-aggregator
+  version: 0.0.1
+- name: atakama-srv-logger-importer
+  repository: s3://atakama-helm/charts/stable/atakama-srv-logger-importer
+  version: 0.0.1
+- name: atakama-srv-web
+  repository: s3://atakama-helm/charts/stable/atakama-srv-web
+  version: 0.0.2
+digest: sha256:c4ffce874e7d28f96ef5733b6ddf00ec413691e4df0b3ff4ded13ab3788c720e
+generated: "2023-01-13T10:17:16.541810738-07:00"
