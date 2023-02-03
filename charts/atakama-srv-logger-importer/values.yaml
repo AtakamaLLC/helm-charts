@@ -68,7 +68,7 @@ logger:
 
 importer:
   image:
-    repository: <docker-hub-registry-name>/atakama-srv-importer
+    repository: atakamallc/atakama-srv-importer
     pullPolicy: IfNotPresent
     tag: ""
 
