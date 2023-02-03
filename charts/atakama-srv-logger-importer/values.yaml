@@ -56,9 +56,9 @@ logger:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
-    
+
   config: {}
-  
+
   volumeMounts:
     - name: logger-private-key
       mountPath: /etc/atakama/
@@ -77,7 +77,7 @@ importer:
   securityContext: {}
 
   resources: {}
-    
+
   config: {}
 
   volumeMounts: []
@@ -87,7 +87,7 @@ importer:
 volumes:
   - name: importer-logs
     emptyDir: {}
-  
+
   - name: logger-private-key
     secret:
       secretName: logger-private-key
