@@ -1,0 +1,29 @@
+apiVersion: v2
+name: enterprise-dashboard-stack
+description: A Helm chart for deploying all services requird to run the enterprise dashboard
+type: application
+version: 0.0.4
+sources:
+  - https://atakamallc.github.io/helm-charts
+dependencies:
+  - name: atakama-srv-aggregator
+    version: 0.0.2
+    repository: "https://atakamallc.github.io/helm-charts"
+    condition: atakama-srv-aggregator.enabled
+    tags:
+      - backend
+      - atakama-srv-aggregator
+  - name: atakama-srv-logger-importer
+    version: 0.0.2
+    repository: "https://atakamallc.github.io/helm-charts"
+    condition: atakama-srv-logger-importer.enabled
+    tags:
+      - backend
+      - atakama-srv-logger-importer
+  - name: atakama-srv-web
+    version: 0.0.3
+    repository: "https://atakamallc.github.io/helm-charts"
+    condition: atakama-srv-web.enabled
+    tags:
+      - frontend
+      - atakama-srv-web

@@ -3,4 +3,6 @@ remote: origin
 target-branch: main
 chart-dirs:
   - charts
+chart-repos:
+  - atakamallc=https://atakamallc.github.io/helm-charts
 helm-extra-args: --timeout 600s
