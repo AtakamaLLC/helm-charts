@@ -2,7 +2,7 @@ apiVersion: v2
 name: enterprise-dashboard-stack
 description: A Helm chart for deploying all services requird to run the enterprise dashboard
 type: application
-version: 0.0.3
+version: 0.0.4
 sources:
   - https://atakamallc.github.io/helm-charts
 dependencies:
