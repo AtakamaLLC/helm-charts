@@ -1,0 +1,103 @@
+# Default values for atakama-srv-aggregator.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+imagePullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+
+environment: []
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+
+config:
+  dashboardImportDir: "/var/atakama-srv/logs"
+  dashboardDbSecret: "db-secret"
+  logVolumeName: importer-logs
+
+
+logger:
+  image:
+    repository: atakamallc/atakama-srv-logger
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
+
+  environment: []
+
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
+
+  resources: {}
+    # limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    # requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  config: {}
+
+  volumeMounts:
+    - name: logger-private-key
+      mountPath: /etc/atakama/
+
+  extraVolumeMounts: []
+
+
+importer:
+  image:
+    repository: atakamallc/atakama-srv-importer
+    pullPolicy: IfNotPresent
+    tag: ""
+
+  environment: []
+
+  securityContext: {}
+
+  resources: {}
+
+  config: {}
+
+  volumeMounts: []
+
+  extraVolumeMounts: []
+
+volumes:
+  - name: importer-logs
+    emptyDir: {}
+
+  - name: logger-private-key
+    secret:
+      secretName: logger-private-key
+      optional: false
+
+extraVolumes: []
+
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

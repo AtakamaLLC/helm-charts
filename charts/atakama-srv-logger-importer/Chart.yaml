@@ -1,0 +1,9 @@
+apiVersion: v2
+name: atakama-srv-logger-importer
+description: A Helm chart for Kubernetes
+maintainers:
+  - name: Brian Lovelace
+    email: brianl@atakama.com
+type: application
+version: 0.0.2
+appVersion: "1.0.0"
