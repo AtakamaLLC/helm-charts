@@ -30,6 +30,7 @@ config:
   dashboardImportDir: "/var/atakama-srv/logs"
   dashboardDbSecret: "db-secret"
   logVolumeName: importer-logs
+  dashboardEnableFileLog: 0
 
 
 logger:

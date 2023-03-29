@@ -5,5 +5,5 @@ maintainers:
   - name: Brian Lovelace
     email: brianl@atakama.com
 type: application
-version: 0.0.3
+version: 0.0.4
 appVersion: "1.0.0"

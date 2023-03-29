@@ -16,6 +16,7 @@ config:
   dashboardImportDir: "/var/atakama-srv/logs"
   dashboardDbSecret: "db-secret"
   dashboardInitDb: 1
+  dashboardEnableFileLog: 0
 
 environment: []
 
