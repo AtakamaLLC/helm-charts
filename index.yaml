@@ -3,6 +3,19 @@ entries:
   atakama-srv-aggregator:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-03-29T23:54:57.311112631Z"
+    description: A Helm chart for Kubernetes
+    digest: c504215661826dadc1fb1f6cfad5fef96de14d572876b4457808df6fcb69cce1
+    maintainers:
+    - email: brianl@atakama.com
+      name: Brian Lovelace
+    name: atakama-srv-aggregator
+    type: application
+    urls:
+    - https://github.com/AtakamaLLC/helm-charts/releases/download/atakama-srv-aggregator-0.0.3/atakama-srv-aggregator-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-02-03T20:45:32.90523009Z"
     description: A Helm chart for Kubernetes
     digest: 126c371d590a9f99b66e5b97c8c3056f21136a8465f133f391b618a1c85330c7
@@ -17,6 +30,19 @@ entries:
   atakama-srv-logger-importer:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-03-29T23:54:57.445354925Z"
+    description: A Helm chart for Kubernetes
+    digest: f1231d5d322a01acabda3addadb68438ce8c605071af12114f6b3dda30d08a17
+    maintainers:
+    - email: brianl@atakama.com
+      name: Brian Lovelace
+    name: atakama-srv-logger-importer
+    type: application
+    urls:
+    - https://github.com/AtakamaLLC/helm-charts/releases/download/atakama-srv-logger-importer-0.0.3/atakama-srv-logger-importer-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-02-03T20:45:33.08211888Z"
     description: A Helm chart for Kubernetes
     digest: 3180fcc449cdcd04a91b4360b2e59777f0f11d4b04b6fd6447a0c398043daa53
@@ -29,6 +55,19 @@ entries:
     - https://github.com/AtakamaLLC/helm-charts/releases/download/atakama-srv-logger-importer-0.0.2/atakama-srv-logger-importer-0.0.2.tgz
     version: 0.0.2
   atakama-srv-web:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-03-29T23:54:57.584297279Z"
+    description: A Helm chart for Kubernetes
+    digest: 78fca29defd97210e6cba204d5950435146205bb54e4f95ca5f3cbd4379b991f
+    maintainers:
+    - email: brianl@atakama.com
+      name: Brian Lovelace
+    name: atakama-srv-web
+    type: application
+    urls:
+    - https://github.com/AtakamaLLC/helm-charts/releases/download/atakama-srv-web-0.0.4/atakama-srv-web-0.0.4.tgz
+    version: 0.0.4
   - apiVersion: v2
     appVersion: 1.0.0
     created: "2023-02-03T20:45:33.246152698Z"
@@ -77,4 +116,4 @@ entries:
     urls:
     - https://github.com/AtakamaLLC/helm-charts/releases/download/enterprise-dashboard-stack-0.0.4/enterprise-dashboard-stack-0.0.4.tgz
     version: 0.0.4
-generated: "2023-02-03T22:42:09.830972932Z"
+generated: "2023-03-29T23:54:57.584310779Z"
