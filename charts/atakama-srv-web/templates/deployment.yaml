@@ -46,6 +46,8 @@ spec:
               value: "{{ .Values.config.dashboardImportDir }}"
             - name: "ATK_SRV_WEB__HOST"
               value: "{{ .Values.config.webHost }}"
+            - name: "ATK_SRV_ENABLE_LOGGING_TO_FILE"
+              value: "{{ .Values.config.dashboardEnableFileLog }}"
             {{- with .Values.environment }}
               {{- toYaml . | nindent 12 }}
             {{- end}}

@@ -32,8 +32,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: "ATK_SRV_DASHBOARD_IMPORT_DIR"
+            - name: "ATK_SRV_IMPORT_DIR"
               value: "{{ .Values.config.dashboardImportDir }}"
+            - name: "ATK_SRV_ENABLE_LOGGING_TO_FILE"
+              value: "{{ .Values.config.dashboardEnableFileLog }}"
             {{- if .Values.config.dashboardInitDb }}
             - name: "ATK_SRV_DASHBOARD__INIT_DB"
               value: "{{ .Values.config.dashboardInitDb }}"

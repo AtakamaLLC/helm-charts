@@ -33,8 +33,10 @@ spec:
           imagePullPolicy: {{ .Values.logger.image.pullPolicy }}
           {{- with .Values.config | merge .Values.logger.config }}
           env:
-            - name: "ATK_SRV_DASHBOARD_IMPORT_DIR"
+            - name: "ATK_SRV_IMPORT_DIR"
               value: "{{ .dashboardImportDir }}"
+            - name: "ATK_SRV_ENABLE_LOGGING_TO_FILE"
+              value: "{{ .dashboardEnableFileLog }}"
           envFrom:
             - secretRef:
                 name: {{ .dashboardDbSecret }}
@@ -57,8 +59,10 @@ spec:
           imagePullPolicy: {{ .Values.importer.image.pullPolicy }}
           {{- with .Values.config | merge .Values.importer.config }}
           env: 
-            - name: ATK_SRV_DASHBOARD_IMPORT_DIR
+            - name: "ATK_SRV_IMPORT_DIR"
               value: {{ .dashboardImportDir }}
+            - name: "ATK_SRV_ENABLE_LOGGING_TO_FILE"
+              value: "{{ .dashboardEnableFileLog }}"
           envFrom:
             - secretRef:
                 name: {{ .dashboardDbSecret }}
