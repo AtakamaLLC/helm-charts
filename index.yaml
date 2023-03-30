@@ -83,6 +83,40 @@ entries:
     version: 0.0.3
   enterprise-dashboard-stack:
   - apiVersion: v2
+    created: "2023-03-30T00:18:48.236222558Z"
+    dependencies:
+    - condition: atakama-srv-aggregator.enabled
+      name: atakama-srv-aggregator
+      repository: https://atakamallc.github.io/helm-charts
+      tags:
+      - backend
+      - atakama-srv-aggregator
+      version: 0.0.3
+    - condition: atakama-srv-logger-importer.enabled
+      name: atakama-srv-logger-importer
+      repository: https://atakamallc.github.io/helm-charts
+      tags:
+      - backend
+      - atakama-srv-logger-importer
+      version: 0.0.3
+    - condition: atakama-srv-web.enabled
+      name: atakama-srv-web
+      repository: https://atakamallc.github.io/helm-charts
+      tags:
+      - frontend
+      - atakama-srv-web
+      version: 0.0.4
+    description: A Helm chart for deploying all services requird to run the enterprise
+      dashboard
+    digest: 3a3efc24681473a6baffd8d98bfb2b36dc904bf696041e6b981c0b88d847d9b2
+    name: enterprise-dashboard-stack
+    sources:
+    - https://atakamallc.github.io/helm-charts
+    type: application
+    urls:
+    - https://github.com/AtakamaLLC/helm-charts/releases/download/enterprise-dashboard-stack-0.0.5/enterprise-dashboard-stack-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
     created: "2023-02-03T22:42:09.830966532Z"
     dependencies:
     - condition: atakama-srv-aggregator.enabled
@@ -116,4 +150,4 @@ entries:
     urls:
     - https://github.com/AtakamaLLC/helm-charts/releases/download/enterprise-dashboard-stack-0.0.4/enterprise-dashboard-stack-0.0.4.tgz
     version: 0.0.4
-generated: "2023-03-29T23:54:57.584310779Z"
+generated: "2023-03-30T00:18:48.236238559Z"
